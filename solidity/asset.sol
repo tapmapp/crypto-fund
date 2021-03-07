@@ -1,3 +1,6 @@
+pragma solidity 0.7.4;
+pragma experimental ABIEncoderV2;
+
 contract Asset {
     
     address owner;
@@ -19,12 +22,12 @@ contract Asset {
       _;
     }
     
-    function addAsset(string _assetName) public payable onlyOwner returns(bool success) {
+    function addAsset(string calldata _assetName) public payable onlyOwner returns(bool success) {
         
         bytes32 blockHash = blockhash(block.number - 1);
         bytes32 id = keccak256(abi.encodePacked(msg.sender, _assetName, blockHash));
         
-        assets[id] = Asset({
+        assetsIds[id] = Asset({
             id: id,
             name: _assetName
         });
@@ -33,26 +36,25 @@ contract Asset {
         
     }
     
-    function getAssets(uint[] indexes) public returns(bytes32[] assetIds, string[] assetsNames) {
+    function getAssets(uint[] calldata indexes) public returns(bytes32[] memory assetIds, string[] memory assetsNames) {
         
         bytes32[] memory id = new bytes32[](indexes.length);
         string[] memory name = new string[](indexes.length);
         
-        for (uint i = 0; i < indexes.length; i++) {
-            Asset storage asset = assets[indexes[i]];
-            id = asset.id;
-            name = asset.name;
+        for (uint i = 0; i < assets.length; i++) {
+            id[i] = assets[i].id;
+            name[i] = assets[i].name;
         }
         
         return (id, name);
         
     }
     
-    function getAsset(bytes32 assetId) public returns(bytes32 id, string name) {
-        Asset memory asset = assets[assetId];
+    function getAsset(bytes32 assetId) public returns(bytes32 id, string memory name) {
+        Asset memory asset = assetsIds[assetId];
         return (asset.id, asset.name);
     }
     
-    function() external payable {}
+    receive() external payable {}
    
 }

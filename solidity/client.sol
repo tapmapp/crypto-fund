@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity 0.7.4;
 pragma experimental ABIEncoderV2;
 
 import './asset.sol';
@@ -29,7 +29,7 @@ contract Client {
         bytes32 blockHash = blockhash(block.number - 1);
         bytes32 id = keccak256(abi.encodePacked(msg.sender, _addr, blockHash));
         
-        Asset[] _assets;
+        Asset[] memory _assets;
         Client memory client;
         
         client = Client({
@@ -41,7 +41,7 @@ contract Client {
         
     }
     
-    function getClients(uint[] indexes) public returns (address[], Asset[][]) {
+    function getClients(uint[] calldata indexes) public returns (address[] memory, Asset[][] memory) {
 
         address[] memory addrs = new address[](indexes.length);
         Asset[][] memory clientAssets = new Asset[][](indexes.length);
@@ -56,7 +56,7 @@ contract Client {
         
     }
     
-    function getClient(address _addr) public returns(address addr, Asset[]) {
+    function getClient(address _addr) public returns(address addr, Asset[] memory) {
         // copy the data into memory
         Client memory client = clientAddresses[_addr];
         
