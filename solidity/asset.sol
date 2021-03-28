@@ -36,7 +36,7 @@ contract Asset {
         
     }
     
-    function getAssets(uint[] calldata indexes) public returns(bytes32[] memory assetIds, string[] memory assetsNames) {
+    function getAssets(uint[] memory indexes) public returns(bytes32[] memory assetIds, string[] memory assetsNames) {
         
         bytes32[] memory id = new bytes32[](indexes.length);
         string[] memory name = new string[](indexes.length);

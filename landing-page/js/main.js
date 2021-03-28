@@ -8,6 +8,7 @@
 
   /* Testimonials Carousel 
   ========================================================*/
+  /*
   var owl = $("#client-testimonial");
     owl.owlCarousel({
       navigation: true,
@@ -28,10 +29,11 @@
     });   
     $('#client-testimonial').find('.owl-prev').html('<i class="lni-chevron-left"></i>');
     $('#client-testimonial').find('.owl-next').html('<i class="lni-chevron-right"></i>');
-
+*/
 
     /* showcase Slider
     =============================*/
+    /*
      var owl = $(".showcase-slider");
       owl.owlCarousel({
         navigation: false,
@@ -46,7 +48,7 @@
         itemsMobile: [479, 1]
       });
 
-
+*/
 
   /* 
    Sticky Nav
@@ -62,7 +64,9 @@
   /* 
  VIDEO POP-UP
  ========================================================================== */
-  $('.video-popup').magnificPopup({
+ 
+ /*
+ $('.video-popup').magnificPopup({
       disableOn: 700,
       type: 'iframe',
       mainClass: 'mfp-fade',
@@ -70,7 +74,7 @@
       preloader: false,
       fixedContentPos: false,
   });
-
+*/
   /* 
    Back Top Link
    ========================================================================== */
@@ -131,10 +135,12 @@
 
   /* Nivo Lightbox
   ========================================================*/   
+  /*
    $('.lightbox').nivoLightbox({
     effect: 'fadeScale',
     keyboardNav: true,
   });
+  */
 
 }(jQuery));
 
