@@ -12,12 +12,14 @@ const formSchema = new mongoose.Schema({
 const Form = mongoose.model('form', formSchema);
 
 // GET MESSAGES
-Form.methods.getMessages = () => {
+formSchema.methods.getMessages = () => {
     return Form.find().sort({ date: -1 });
 }
 
 // ADD MESSAGE
-Form.methods.addMessage = (name, email, phone, referal, message) => {
-    const message = new Form({ name, email, phone, referal, message });
-    return message.save();
+formSchema.methods.addMessage = (name, email, phone, referal, message) => {
+    let formMessage = new Form({ name, email, phone, referal, message });
+    return formMessage.save();
 }
+
+module.exports = Form;

@@ -2,12 +2,18 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const config = require('./config/env');
+const router = express.Router();
 
 const PORT = process.env.PORT || config.PORT;
 process.env.SECRET = config.SECRET;
 
+// DATA BASE CONNECTION
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://whola:wholaPass86@ds161306.mlab.com:61306/wholadb');
+
 // APP INITIALIZATION
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,6 +49,6 @@ app.use((err, req, res) => {
 
 });
 
-app.listen(8000, () => {
+app.listen(8080, () => {
   console.log('Server listening on *:8000');
 });

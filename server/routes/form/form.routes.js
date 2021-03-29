@@ -18,3 +18,5 @@ router.post('/add-message', (req, res, next) => {
   const message = Form.schema.methods.addMessage(body.name, body.email, body.phone, body.referal, body.message);
   message.then(data => res.status(200).json(data), err => res.status(500).json(err));
 });
+
+module.exports = router;
