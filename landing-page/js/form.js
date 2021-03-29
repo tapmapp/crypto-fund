@@ -5,8 +5,8 @@
 
 $(document).ready(function() {
     // $('.form_error').hide();
-    $('#submit').click(function() {
-
+    $('#submit').click(function(e) {
+        e.preventDefault();
         $('input').removeClass('error');
         $('textarea').removeClass('error');
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
         var referral = $('#referral').prop('checked');
         var message = $('#message').val();
 
-        if (name == '') {
+        if (name == '' || IsMalicious(name)) {
             $('#name').addClass('error');
             error = true;
         }
@@ -27,7 +27,7 @@ $(document).ready(function() {
             $('#email').addClass('error');
             error = true;
         }
-        
+
         if (IsEmail(email) === false) {
             $('#email').addClass('error');
             error = true;
@@ -65,6 +65,15 @@ function IsEmail(email) {
     if(!regex.test(email)) {
         return false;
     } else {
+        return true;
+    }
+}
+
+function IsMalicious(field) {
+    var regex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    if(!regex.test(field)) {
+        return false;
+    } else {
         return true;
     }
 }
