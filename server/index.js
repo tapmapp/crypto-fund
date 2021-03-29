@@ -7,9 +7,11 @@ const router = express.Router();
 const PORT = process.env.PORT || config.PORT;
 process.env.SECRET = config.SECRET;
 
+const dbUrl = 'mongodb+srv://elAmerican86:ew7cyPjfHqQVzGu@consultacrypto.jcc94.mongodb.net/ConsultaCrypto';
+
 // DATA BASE CONNECTION
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://whola:wholaPass86@ds161306.mlab.com:61306/wholadb');
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // APP INITIALIZATION
 const app = express();
@@ -28,13 +30,6 @@ app.use((req, res, next) => {
 // FORM ROUTE
 const form = require('./routes/form/form.routes');
 app.use('/api/form', form);
-
-// 404 ERROR
-app.use((req, res, next) => {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
 
 // ERROR HANDLER
 app.use((err, req, res) => {

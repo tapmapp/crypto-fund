@@ -302,37 +302,37 @@
         <div class="row">
           <!-- Start Col -->
           <div class="col-lg-6 col-md-6 col-md-12">
-          <form id="contactForm">
+          
             <div class="row">
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Name" required data-error="Please enter your name">
-                  <div class="help-block with-errors"></div>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                  <div class="help-block with-errors">Sorry, we couldn't find your name!</div>
                 </div>                                 
               </div>
               
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Email" required data-error="Please enter your Email">
-                  <div class="help-block with-errors"></div>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                  <div class="help-block with-errors">Sorry, your email is wrong!</div>
                 </div>                                 
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="text" placeholder="Phone" id="phone" class="form-control" name="phone" required data-error="Please enter a valid phone number">
-                  <div class="help-block with-errors"></div>
+                  <input type="text" placeholder="Phone" id="phone" class="form-control" name="phone">
+                  <div class="help-block with-errors">Sorry, there is an error in your phone number!</div>
                 </div> 
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <input type="checkbox" class="form-control checkbox" id="referal" name="referal" placeholder="Referal">
+                  <input type="checkbox" class="form-control checkbox" id="referral" name="referral">
                   <span>Referral</span>
                 </div>                                 
               </div>
               <div class="col-md-8">
                 <div class="form-group"> 
-                  <textarea class="form-control" id="message"  name="message" placeholder="Write Message" rows="4" data-error="Write your message" required></textarea>
-                  <div class="help-block with-errors"></div>
+                  <textarea class="form-control" id="message"  name="message" placeholder="Hello, please contact me, I am interested in knowing more." rows="4" required></textarea>
+                  <div class="help-block with-errors">Sorry, we couldn't find your message!</div>
                 </div>
                 <div class="submit-button">
                   <button class="btn btn-common" id="submit" type="submit">Submit</button>
@@ -341,7 +341,7 @@
                 </div>
               </div>
             </div>            
-          </form>
+          
           </div>
           <!-- End Col -->
           <!-- Start Col -->
@@ -374,7 +374,9 @@
 
           <!-- Start Col -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-              <div class="footer-logo">Consulta Crypto</div>
+              <div class="footer-logo">
+                <a href="https://consultacrypto.com">Consulta Crypto</a>
+              </div>
             </div>
              <!-- End Col -->
 
@@ -445,6 +447,7 @@
     <script src="js/scrolling-nav.js" async></script>    
     <script src="js/jquery.easing.min.js" async></script>       
     <script src="js/main.js" async></script>
+    <script src="js/form.js" async></script>
     
   </body>
 </html>

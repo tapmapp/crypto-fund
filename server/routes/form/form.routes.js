@@ -13,10 +13,18 @@ router.get('/', (req, res, next) => {
 });
 
 // ADD MESSAGE
-router.post('/add-message', (req, res, next) => {
+router.post('/send-message', (req, res, next) => {
+  
   const body = req.body;
+
+  // VALIDATION FIELDS & DYNAMIC INJECTIONS
+
+  // SAVE ON DB
   const message = Form.schema.methods.addMessage(body.name, body.email, body.phone, body.referal, body.message);
   message.then(data => res.status(200).json(data), err => res.status(500).json(err));
+
+  // SEND EMAIL
+
 });
 
 module.exports = router;
