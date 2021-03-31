@@ -31,10 +31,6 @@ app.use((req, res, next) => {
 const form = require('./routes/form.routes');
 app.use('/api/form', form);
 
-// SUBSCRIBE ROUTE
-const subscribe = require('./routes/form.routes');
-app.use('/api/form', form);
-
 
 // ERROR HANDLER
 app.use((err, req, res) => {

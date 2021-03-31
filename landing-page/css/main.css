@@ -435,7 +435,9 @@ button:focus {
   width: 100%; }
 
 .navbar-brand {
-  color: #fff; }
+  color: #fff;
+  font-size: 25px;
+}
 
 .navbar-expand-md .navbar-nav .nav-link:focus,
 .navbar-expand-md .navbar-nav .nav-link:hover,
@@ -546,8 +548,7 @@ button:focus {
    About 
    ========================================================================== */
 #services .services-item {
-  padding: 60px 30px;
-  
+  padding: 30px 30px;
   -moz-transition: all .8s ease;
   -webkit-transition: all .8s ease;
   min-height: 420px;
@@ -558,25 +559,21 @@ button:focus {
   }
     
   #services .services-item .icon {
-    background: #e0eff4;
-    border: 2px solid #016991;
     transition: 300ms;
-    width: 110px;
-    height: 110px;
     margin: 0px auto;
-    margin-bottom: 0px;
-    text-align: center;
-    display: block;
-    border-radius: 50%;
-    position: relative;
-    margin-bottom: 25px; }
+    margin-bottom: 45px;
+ }
   #services .services-item .icon i {
     font-size: 40px;
     color: #006991;
     position: absolute;
     left: 0;
     right: 0;
-    top: 30%; }
+    top: 30%;
+  }
+  #services .services-item .icon img {
+    width: 150px;
+  }
   #services .services-item h4 {
     font-size: 20px;
     font-weight: 600;

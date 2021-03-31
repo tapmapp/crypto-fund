@@ -4,11 +4,43 @@
     
 
 $(document).ready(function() {
-    // $('.form_error').hide();
-    $('#submit').click(function(e) {
+
+    $('#subscribe').click(function(e) {
+
         e.preventDefault();
-        $('input').removeClass('error');
-        $('textarea').removeClass('error');
+
+        $('.subscribe-area input').removeClass('error');
+
+        var error = false;
+
+        var subscriber = $('.subscribe-area input').val();
+
+        if (subscribe == '') {
+            $('.subscribe-area').addClass('error');
+            error = true;
+        }
+
+        if (error) return false;
+
+        $.post("http://localhost:8080/api/form/subscribe", { subscriber }, function(response) {
+            console.log(response);
+            /*
+            $('#contactform').fadeOut('slow',function() {
+                $('#success').html(response);
+                $('#success').fadeIn('slow');
+            });
+            */
+        });
+
+    });
+
+
+    $('#submit').click(function(e) {
+
+        e.preventDefault();
+        
+        $('.form-group input').removeClass('error');
+        $('.form-group textarea').removeClass('error');
 
         var error = false;
 
@@ -60,6 +92,7 @@ $(document).ready(function() {
     
     });
 });
+
 function IsEmail(email) {
     var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if(!regex.test(email)) {
