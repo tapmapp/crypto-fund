@@ -7,7 +7,7 @@ const router = express.Router();
 const PORT = process.env.PORT || config.PORT;
 process.env.SECRET = config.SECRET;
 
-const dbUrl = 'mongodb+srv://elAmerican86:ew7cyPjfHqQVzGu@consultacrypto.jcc94.mongodb.net/ConsultaCrypto';
+const dbUrl = config.DB;
 
 // DATA BASE CONNECTION
 const mongoose = require('mongoose');

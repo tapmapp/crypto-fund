@@ -42,10 +42,10 @@ router.post('/send-message', (req, res, next) => {
     res.status(200).json(data);
     
   }, err => {
-    res.status(500).json(err);
-  });
 
-  // SEND EMAIL
+    res.status(500).json(err);
+  
+  });
 
 });
 
