@@ -74,8 +74,6 @@ $(document).ready(function() {
             $('#message').addClass('error');
             error = true;
         }
-        
-        console.log(error);
 
         if (error) return false;
         
