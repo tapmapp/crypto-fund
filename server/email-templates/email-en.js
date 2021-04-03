@@ -1,8 +1,9 @@
 
 class Template {
-    constructor(subject, content) {
+    constructor(subject, content, message) {
         this.subject = subject;
         this.content = content;
+        this.message = message;
     }
 
     getTemplate() {
@@ -418,7 +419,7 @@ class Template {
         '                    <tbody><tr>'+
         '                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">'+
         '                            <h3 style="text-align: center;"><br>'+
-        '<span style="font-size:24px"><span style="color:#000000">Thank you for your email!</span></span></h3>'+
+        `<span style="font-size:24px"><span style="color:#000000">${this.message}</span></span></h3>`+
         '<div style="text-align: center;"><span style="font-size:24px"><span style="color:#000000">I am looking forward to speaking to you.</span></span></div>'+
         `<p>${this.content}</p>`+
         '                        </td>'+

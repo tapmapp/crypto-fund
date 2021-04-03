@@ -28,11 +28,13 @@ router.post('/send-message', (req, res, next) => {
     `<li>Name: ${body.name}</li>`+
     `<li>Email: ${body.email}</li>`+
     `<li>Phone: ${body.phone}</li>`+
-    `<li>Referal: ${body.referal}</li>`+
+    `<li>Referal: ${body.referral ? 'YES' : 'NO'}</li>`+
     `<li>Message: ${body.message}</li>`+
   '</ul>';
 
-  const newMessage = new Template(subject, content);
+  const message = 'Thank you for your email';
+
+  const newMessage = new Template(subject, content, message);
   const emailBody = HTMLParser.parse(newMessage.getTemplate());
 
   transporter.sendMail({
@@ -64,10 +66,12 @@ router.post('/subscribe', (req, res, next) => {
   
   const subject = 'Consulta Crypto - New Subscriber';
   const content = '<ul>' +
-    `<li>Email: ${body.email}</li>`+
+    `<li>Email: ${body.subscriber}</li>`+
   '</ul>';
 
-  const newMessage = new Template(subject, content);
+  const message = 'Thank you for subscribing';
+
+  const newMessage = new Template(subject, content, message);
   const emailBody = HTMLParser.parse(newMessage.getTemplate());
 
   transporter.sendMail({

@@ -634,8 +634,7 @@ button:focus {
     -webkit-transition: all .8s ease;
     transition: all .8s ease; }
     #features .feature-item .feature-icon {
-      background: #e0eff4;
-      border: 2px solid #016991;
+      background: #f9f9f9;
       width: 100px;
       height: 100px;
       margin: 0px auto;
@@ -651,6 +650,13 @@ button:focus {
       margin-right: 30px;
       margin-top: 12px;
       transition: 300ms;
+
+    }
+    #features .feature-item .feature-icon img {
+      width: 120px;
+      position: relative;
+      right: 10px;
+      bottom: 10px;
     }
       #features .feature-item .feature-icon i {
         font-size: 40px;
@@ -1562,7 +1568,7 @@ textarea.error::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 }
 #footer-Content .widget .subscribe-area input[type=email] {
   border: 1px solid #fff;
-  color: #e2e2e2;
+  color: #333;
   font-size: 14px;
   font-style: italic;
   height: 38px;
