@@ -22,7 +22,7 @@ $(document).ready(function() {
 
         if (error) return false;
 
-        $.post("http://localhost:8080/api/form/subscribe", { subscriber }, function(response) {
+        $.post("https://consultacrypto.com/api/form/subscribe", { subscriber }, function(response) {
             console.log(response);
             /*
             $('#contactform').fadeOut('slow',function() {
@@ -78,7 +78,7 @@ $(document).ready(function() {
         if (error) return false;
         
         //ajax call
-        $.post("http://localhost:8080/api/form/send-message", { name, email, phone, referral, message }, function(response) {
+        $.post("https://consultacrypto.com/api/form/send-message", { name, email, phone, referral, message }, function(response) {
             console.log(response);
             /*
             $('#contactform').fadeOut('slow',function() {
