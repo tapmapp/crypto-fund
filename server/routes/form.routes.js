@@ -4,7 +4,7 @@ const router = express.Router();
 const HTMLParser = require('node-html-parser');
 const os = require('os');
 
-const template = require('../email-templates/email-en');
+const Template = require('../email-templates/email-en');
 
 let mailerConfig = {
   host: os.hostname(),
@@ -23,8 +23,17 @@ router.post('/send-message', (req, res, next) => {
   // SAVE ON DB
   // const message = Form.schema.methods.addMessage(body.name, body.email, body.phone, body.referal, body.message);
   // message.then(data => {
+  const subject = 'Consulta Crypto - New Message';
+  const content = '<ul>' +
+    `<li>Name: ${body.name}</li>`+
+    `<li>Email: ${body.email}</li>`+
+    `<li>Phone: ${body.phone}</li>`+
+    `<li>Referal: ${body.referal}</li>`+
+    `<li>Message: ${body.message}</li>`+
+  '</ul>';
 
-  const emailBody = HTMLParser.parse(template);
+  const newMessage = new Template(subject, content);
+  const emailBody = HTMLParser.parse(newMessage.getTemplate());
 
   transporter.sendMail({
     from: 'contact@consultacrypto.com',
@@ -52,8 +61,14 @@ router.post('/subscribe', (req, res, next) => {
   // SAVE ON DB
   // const subscriber = Subscribe.schema.methods.subscribe(body.subscriber);
   // subscriber.then(data => {
+  
+  const subject = 'Consulta Crypto - New Subscriber';
+  const content = '<ul>' +
+    `<li>Email: ${body.email}</li>`+
+  '</ul>';
 
-  const emailBody = HTMLParser.parse(template);
+  const newMessage = new Template(subject, content);
+  const emailBody = HTMLParser.parse(newMessage.getTemplate());
 
   transporter.sendMail({
     from: 'contact@consultacrypto.com',
