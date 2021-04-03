@@ -22,14 +22,16 @@ $(document).ready(function() {
 
         if (error) return false;
 
-        $.post("https://consultacrypto.com/api/form/subscribe", { subscriber }, function(response) {
-            console.log(response);
-            /*
-            $('#contactform').fadeOut('slow',function() {
-                $('#success').html(response);
-                $('#success').fadeIn('slow');
-            });
-            */
+        $.post("https://consultacrypto.com/api/form/subscribe", { subscriber }, function(data) {
+            $('.subscribe-area input').val('Subscribed!');
+        }).fail(function(data) {
+
+            $('.subscribe-area input').val('Error subscribing!');
+
+            setTimeout(() => {
+                $('.subscribe-area input').val('');
+            }, 5000);
+
         });
 
     });
@@ -50,42 +52,38 @@ $(document).ready(function() {
         var referral = $('#referral').prop('checked');
         var message = $('#message').val();
 
+        console.log(referral)
+
         if (name == '' || IsMalicious(name)) {
             $('#name').addClass('error');
             error = true;
         }
-
-        if (email == '') {
+ 
+        if (IsEmail(email) === false || IsMalicious(name)) {
             $('#email').addClass('error');
-            error = true;
-        }
-
-        if (IsEmail(email) === false) {
-            $('#email').addClass('error');
-            error = true;
-        }
-
-        if (referral == '') {
-            $('#referral').addClass('error');
-            error = true;
-        }
-
-        if (message == '') {
-            $('#message').addClass('error');
             error = true;
         }
 
         if (error) return false;
         
+        $('#contact form button').html('Sending ...');
+
         //ajax call
-        $.post("https://consultacrypto.com/api/form/send-message", { name, email, phone, referral, message }, function(response) {
-            console.log(response);
-            /*
-            $('#contactform').fadeOut('slow',function() {
-                $('#success').html(response);
-                $('#success').fadeIn('slow');
+        $.post("https://consultacrypto.com/api/form/send-message", { name, email, phone, referral, message }, function(data) {
+            $('#contact form').fadeOut(300, function() {
+                $('#contact .success-message').addClass('active');
             });
-            */
+        }).fail(function(data) {
+
+            $('#contact form').fadeOut(300, function() {
+                $('#contact .error-message').addClass('active');
+            });
+
+            setTimeout(() => {
+                $('#contact .error-message').removeClass('active');
+                $('#contact form').fadeIn(300);
+            }, 5000);
+
         });
     
     });

@@ -451,6 +451,17 @@ Domain Path:      /languages/
    .navbar-expand-md .navbar-nav .open > .nav-link {
      color: #ffffff; }
    
+   .navbar-nav .nav-item.language {
+     margin: 0px 0px 0px 50px;
+   }
+   .navbar-nav .nav-item.language a {
+     float: left;
+     font-size: 14px;
+     margin: 0px 10px 0px 0px;
+     line-height: 23px;
+   
+   }
+   
    .navbar-expand-md .navbar-toggler {
      background: transparent;
      border: 1px solid #fff;
@@ -1445,9 +1456,30 @@ Domain Path:      /languages/
      font-size: 16px;
    }
    
+   #contact .success-message {
+     background-color: #dfffdf;
+     border: 2px solid #509a50;
+     padding: 20px 30px;
+     font-size: 18px;
+     color: #509a50;
+     display: none;
+   }
    
-   #contact form#contactForm .form-group {
-     
+   #contact .error-message {
+     background-color: #ffdfdf;
+     border: 2px solid #9a5050;
+     padding: 20px 30px;
+     font-size: 18px;
+     color: #9a5050;
+     display: none;
+   }
+   
+   #contact .success-message.active {
+     display: inherit;
+   }
+   
+   #contact .error-message.active {
+     display: inherit;
    }
    
    #contact form#contactForm input[type=text], #contact form#contactForm input[type=email] {

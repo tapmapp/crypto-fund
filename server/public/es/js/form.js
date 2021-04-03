@@ -22,14 +22,16 @@ $(document).ready(function() {
 
         if (error) return false;
 
-        $.post("http://localhost:8080/api/form/subscribe", { subscriber }, function(response) {
-            console.log(response);
-            /*
-            $('#contactform').fadeOut('slow',function() {
-                $('#success').html(response);
-                $('#success').fadeIn('slow');
-            });
-            */
+        $.post("https://consultacrypto.com/api/form/subscribe", { subscriber }, function(data) {
+            $('.subscribe-area input').val('Suscrito!');
+        }).fail(function(data) {
+
+            $('.subscribe-area input').val('Error subscripción!');
+
+            setTimeout(() => {
+                $('.subscribe-area input').val('');
+            }, 5000);
+
         });
 
     });
@@ -54,40 +56,32 @@ $(document).ready(function() {
             $('#name').addClass('error');
             error = true;
         }
-
-        if (email == '') {
+ 
+        if (IsEmail(email) === false || IsMalicious(name)) {
             $('#email').addClass('error');
             error = true;
         }
-
-        if (IsEmail(email) === false) {
-            $('#email').addClass('error');
-            error = true;
-        }
-
-        if (referral == '') {
-            $('#referral').addClass('error');
-            error = true;
-        }
-
-        if (message == '') {
-            $('#message').addClass('error');
-            error = true;
-        }
-        
-        console.log(error);
 
         if (error) return false;
         
+        $('#contact form button').html('Enviando ...');
+
         //ajax call
-        $.post("http://localhost:8080/api/form/send-message", { name, email, phone, referral, message }, function(response) {
-            console.log(response);
-            /*
-            $('#contactform').fadeOut('slow',function() {
-                $('#success').html(response);
-                $('#success').fadeIn('slow');
+        $.post("https://consultacrypto.com/api/form/send-message", { name, email, phone, referral, message }, function(data) {
+            $('#contact form').fadeOut(300, function() {
+                $('#contact .success-message').addClass('active');
             });
-            */
+        }).fail(function(data) {
+
+            $('#contact form').fadeOut(300, function() {
+                $('#contact .error-message').addClass('active');
+            });
+
+            setTimeout(() => {
+                $('#contact .error-message').removeClass('active');
+                $('#contact form').fadeIn(300);
+            }, 5000);
+
         });
     
     });

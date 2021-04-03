@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="Bootstrap, Landing page, Template, Business, Service">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Consulta Crypto">
+    <meta name="author" content="Francisco Roca">
     <title>Consulta Crypto</title>
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="./img/consulta-crypto-icon.png" type="image/png">
@@ -56,6 +56,10 @@
               </li>    
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="#contact">Contact</a>
+              </li>
+              <li class="nav-item language">
+                <a class="nav-link page-scroll" href="https://consultacrypto.com">EN</a>
+                <a class="nav-link page-scroll" href="https://consultacrypto.com/es">ES</a>
               </li>                         
             </ul>
           </div>
@@ -313,46 +317,54 @@
         <div class="row">
           <!-- Start Col -->
           <div class="col-lg-6 col-md-6 col-md-12">
-          <form id="contactForm">
-            <div class="row">
-              <div class="col-md-8">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
-                  <div class="help-block with-errors">Sorry, we couldn't find your name!</div>
-                </div>                                 
-              </div>
-              
-              <div class="col-md-8">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                  <div class="help-block with-errors">Sorry, your email is wrong!</div>
-                </div>                                 
-              </div>
-              <div class="col-md-8">
-                <div class="form-group">
-                  <input type="text" placeholder="Phone" id="phone" class="form-control" name="phone">
-                  <div class="help-block with-errors">Sorry, there is an error in your phone number!</div>
-                </div> 
-              </div>
-              <div class="col-md-8">
-                <div class="form-group">
-                  <input type="checkbox" class="form-control checkbox" id="referral" name="referral">
-                  <span>Referral</span>
-                </div>                                 
-              </div>
-              <div class="col-md-8">
-                <div class="form-group"> 
-                  <textarea class="form-control" id="message"  name="message" placeholder="Hello, please contact me, I am interested in knowing more." rows="4" required></textarea>
-                  <div class="help-block with-errors">Sorry, we couldn't find your message!</div>
+            <form id="contactForm">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                    <div class="help-block with-errors">Sorry, we couldn't find your name!</div>
+                  </div>                                 
                 </div>
-                <div class="submit-button">
-                  <button class="btn btn-common" id="submit" type="submit">Submit</button>
-                  <div id="msgSubmit" class="h3 hidden"></div> 
-                  <div class="clearfix"></div> 
+                
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                    <div class="help-block with-errors">Sorry, your email is wrong!</div>
+                  </div>                                 
                 </div>
-              </div>
-            </div>            
-          </form>
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text" placeholder="Phone" id="phone" class="form-control" name="phone">
+                    <div class="help-block with-errors">Sorry, there is an error in your phone number!</div>
+                  </div> 
+                </div>
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="checkbox" class="form-control checkbox" id="referral" name="referral">
+                    <span>Referral</span>
+                  </div>                                 
+                </div>
+                <div class="col-md-8">
+                  <div class="form-group"> 
+                    <textarea class="form-control" id="message"  name="message" placeholder="Hello, please contact me, I am interested in knowing more." rows="4" required></textarea>
+                    <div class="help-block with-errors">Sorry, we couldn't find your message!</div>
+                  </div>
+                  <div class="submit-button">
+                    <button class="btn btn-common" id="submit" type="submit">Submit</button>
+                    <div id="msgSubmit" class="h3 hidden"></div> 
+                    <div class="clearfix"></div> 
+                  </div>
+                </div>
+              </div>            
+            </form>
+            <div class="success-message">
+              Your message was sent successfully!<br/>
+              You will receive a copy.
+            </div>
+            <div class="error-message">
+              There was an error sending your message!<br/>
+              Please try again.
+            </div>
           </div>
           <!-- End Col -->
           <!-- Start Col -->

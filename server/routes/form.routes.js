@@ -17,39 +17,49 @@ let transporter = nodemailer.createTransport(mailerConfig);
 router.post('/send-message', (req, res, next) => {
   
   const body = req.body;
-
   // VALIDATION FIELDS & DYNAMIC INJECTIONS
-
+  
   // SAVE ON DB
   // const message = Form.schema.methods.addMessage(body.name, body.email, body.phone, body.referal, body.message);
   // message.then(data => {
-  const subject = 'Consulta Crypto - New Message';
-  const content = '<ul>' +
-    `<li>Name: ${body.name}</li>`+
-    `<li>Email: ${body.email}</li>`+
-    `<li>Phone: ${body.phone}</li>`+
-    `<li>Referal: ${body.referral ? 'YES' : 'NO'}</li>`+
-    `<li>Message: ${body.message}</li>`+
-  '</ul>';
-
-  const message = 'Thank you for your email';
-
-  const newMessage = new Template(subject, content, message);
-  const emailBody = HTMLParser.parse(newMessage.getTemplate());
-
-  transporter.sendMail({
-    from: 'contact@consultacrypto.com',
-    to: `${body.email}`,
-    bcc: 'contact@consultacrypto.com',
-    subject: 'Consulta Crypto - Thank you for your message!',
-    html: emailBody.toString()
-  }, (err, info) => {
-
-    if (err) res.status(500).json(err);
     
-    res.status(200).json(info);
+    if (body.email) {
+      
+    if (!req.body.message) {
+      message = 'Hello, please contact me, I am interested in knowing more.';
+    }
 
-  });
+    const subject = 'Consulta Crypto - New Message';
+    const content = '<ul>' +
+      `<li>Name: ${body.name}</li>`+
+      `<li>Email: ${body.email}</li>`+
+      `<li>Phone: ${body.phone}</li>`+
+      `<li>Referal: ${body.referral === true ? 'YES' : 'NO'}</li>`+
+      `<li>Message: ${message}</li>`+
+    '</ul>';
+
+    const confirmationMessage = 'Thank you for your email';
+
+    const newMessage = new Template(subject, content, confirmationMessage);
+    const emailBody = HTMLParser.parse(newMessage.getTemplate());
+
+    transporter.sendMail({
+      from: 'contact@consultacrypto.com',
+      to: `${body.email}`,
+      bcc: 'contact@consultacrypto.com',
+      subject: 'Consulta Crypto - Thank you for your message!',
+      html: emailBody.toString()
+    }, (err, info) => {
+
+      if (err) res.status(500).json('There was a problem sending your email!');
+      
+      res.status(200).json(info);
+
+    });
+
+  } else {
+    res.status(500).json('No email found');
+  }
 
 });
 
@@ -64,30 +74,35 @@ router.post('/subscribe', (req, res, next) => {
   // const subscriber = Subscribe.schema.methods.subscribe(body.subscriber);
   // subscriber.then(data => {
   
-  const subject = 'Consulta Crypto - New Subscriber';
-  const content = '<ul>' +
-    `<li>Email: ${body.subscriber}</li>`+
-  '</ul>';
+  if (body.subscriber) {
 
-  const message = 'Thank you for subscribing';
+    const subject = 'Consulta Crypto - New Subscriber';
+    const content = '<ul>' +
+      `<li>Email: ${body.subscriber}</li>`+
+    '</ul>';
 
-  const newMessage = new Template(subject, content, message);
-  const emailBody = HTMLParser.parse(newMessage.getTemplate());
+    const message = 'Thank you for subscribing';
 
-  transporter.sendMail({
-    from: 'contact@consultacrypto.com',
-    to: `${body.subscriber}`,
-    bcc: 'contact@consultacrypto.com',
-    subject: 'Consulta Crypto - Thank you for subscribing!',
-    html: emailBody.toString()
-  }, (err, info) => {
+    const newMessage = new Template(subject, content, message);
+    const emailBody = HTMLParser.parse(newMessage.getTemplate());
 
-    if (err) res.status(500).json(err);
+    transporter.sendMail({
+      from: 'contact@consultacrypto.com',
+      to: `${body.subscriber}`,
+      bcc: 'contact@consultacrypto.com',
+      subject: 'Consulta Crypto - Thank you for subscribing!',
+      html: emailBody.toString()
+    }, (err, info) => {
+
+      if (err) res.status(500).json('There was a problem with your susbcription!');
+      
+      res.status(200).json(info);
     
-    res.status(200).json(info);
-  
-  });
+    });
 
+  } else {
+    res.status(500).json('No email found');
+  }
 
   // }, err => {
 
