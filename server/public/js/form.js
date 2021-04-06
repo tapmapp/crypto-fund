@@ -52,8 +52,6 @@ $(document).ready(function() {
         var referral = $('#referral').prop('checked');
         var message = $('#message').val();
 
-        console.log(referral)
-
         if (name == '' || IsMalicious(name)) {
             $('#name').addClass('error');
             error = true;

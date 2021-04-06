@@ -25,8 +25,8 @@ router.post('/send-message', (req, res, next) => {
     
     if (body.email) {
       
-    if (!req.body.message) {
-      message = 'Hello, please contact me, I am interested in knowing more.';
+    if (!body.message) {
+      body.message = 'Hello, please contact me, I am interested in knowing more.';
     }
 
     const subject = 'Consulta Crypto - New Message';
@@ -35,7 +35,7 @@ router.post('/send-message', (req, res, next) => {
       `<li>Email: ${body.email}</li>`+
       `<li>Phone: ${body.phone}</li>`+
       `<li>Referal: ${body.referral === true ? 'YES' : 'NO'}</li>`+
-      `<li>Message: ${message}</li>`+
+      `<li>Message: ${body.message}</li>`+
     '</ul>';
 
     const confirmationMessage = 'Thank you for your email';
